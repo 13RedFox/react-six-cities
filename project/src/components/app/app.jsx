@@ -1,32 +1,23 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Favorites from '../Favorites';
-import Login from '../Login';
-import Main from '../Main';
-import Room from '../Room';
+import Main from '../Main/';
+import Login from '../Login/';
+import Favorites from '../Favorites/';
+import Room from '../Room/';
+import NotFound from '../NotFound/';
 
-function App() {
+function app() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" exact>
-          <Main />
-        </Route>
-        <Route path="/login" exact>
-          <Login />
-        </Route>
-        <Route path="/favorites" exact>
-          <Favorites />
-        </Route>
-        <Route path="/offer" exact>
-          <Room />
-        </Route>
-        <Route path="/" exact>
-          <Main />
-        </Route>
+        <Route path="/login" component={Login} />
+        <Route path="/room/:id?" component={Room} />
+        <Route path="/favorites" component={Favorites} />
+        <Route path="/" exact component={Main} />
+        <Route path="" component={NotFound} />
       </Switch>
     </BrowserRouter>
   );
 }
 
-export default App;
+export default app;
